@@ -1,5 +1,18 @@
 ---
+const pageTitle = "私について";
 
+const identity = {
+  firstName: "太郎",
+  country: "日本",
+  occupation: "エンジニア",
+  hobbies: ["写真", "バードウォッチング", "野球"]
+};
+
+const skills = ["HTML", "CSS", "JavaScript", "Astro", "Git"];
+
+const happy = true;
+const finished = false;
+const goal = 3;
 ---
 
 <html lang="ja">
@@ -8,14 +21,14 @@
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="viewport" content="width=device-width" />
     <meta name="generator" content={Astro.generator} />
-    <title>私のAstroサイト</title>
+    <title>{pageTitle}</title>
   </head>
   <body>
     <a href="/">ホーム</a>
     <a href="/about/">概要</a>
     <a href="/blog/">ブログ</a>
 
-    <h1>私について</h1>
+    <h1>{pageTitle}</h1>
     <h2>... そして私の新しいAstroサイトについて！</h2>
 
     <p>
@@ -25,5 +38,17 @@
     <p>
       このサイトはチュートリアルを進めるにつれて更新されていきます。定期的にチェックして、私の旅の様子を見に来てください！
     </p>
-  </body>
+    <p>
+      {identity.firstName}は{identity.country}出身の{identity.occupation}です。
+    </p>
+    <p>
+      {identity.firstName}の趣味は{identity.hobbies.join(", ")}です。
+    </p>
+    <ul>
+      {skills.map((skill) => <li>{skill}</li>)}
+    </ul>
+
+    {happy && <p>私は幸せです！</p>}
+    {finished && <p>私は目標を達成しました！</p>}
+    {goal === 3 ? <p>My goal is to finish in 3 days. 3日で終えるのが目標です。</p> : <p>My goal is not 3 days. 3日が目標ではありません。</p>}  </body>
 </html>
